@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
+  web:
+    build: .
+    environment:
+      - PORT=3000
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
+    ports:
+      - 3000:3000
+    depends_on: 
+      - postgres
+
