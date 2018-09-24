@@ -3,6 +3,7 @@ import { Method, Route } from "./types";
 import { createHandler, addRoutesToReceiver } from "./util";
 import { FrontpageController } from "./features/frontpage";
 import { VisitorDatabaseImpl } from "./database/VisitorDatabaseImpl";
+import { VisitorCountApiController } from "./features/api/visitorCount";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,6 +17,11 @@ const routes: Route[] = [
     method: Method.GET,
     path: '/',
     controller: new FrontpageController(db)
+  },
+  {
+    method: Method.GET,
+    path: '/api/count',
+    controller: new VisitorCountApiController(db)
   }
 ];
 

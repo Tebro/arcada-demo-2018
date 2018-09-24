@@ -4,7 +4,7 @@ import { VisitorDatabase } from "../types";
 import { FrontpageController } from "./frontpage";
 
 
-class VisitorDatabaseMockImpl implements VisitorDatabase {
+export class VisitorDatabaseMockImpl implements VisitorDatabase {
   private numVisitors = 0;
 
   public async addVisitor(data: any) {
